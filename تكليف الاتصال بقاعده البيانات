@@ -1,0 +1,16 @@
+<?php
+$servername = "localhost";
+$username   = "root";
+$password   = "";
+$database   = "test_db";
+
+// إنشاء كائن الاتصال
+$conn = new mysqli($servername, $username, $password, $database);
+
+// التحقق من الاتصال
+if ($conn->connect_error) {
+    die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
+}
+
+echo "تم الاتصال بقاعدة البيانات بنجاح";
+?>
