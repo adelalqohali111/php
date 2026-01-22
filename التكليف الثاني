@@ -1,0 +1,271 @@
+عادل عبدالكريم القهالي  
+امن سبراني 
+المجموعه 1
+ <?php
+// ==========================
+// التعامل مع الملفات
+// ==========================
+
+// فتح الملفات
+$file = fopen("adel.txt", "r");   // فتح ملف للقراءة
+$file = fopen("adel.txt", "w");    // فتح ملف للكتابة
+$file = fopen("adel.txt", "a");    // فتح ملف للإضافة من النهاية
+fclose($file);                      // إغلاق الملف
+
+// قراءة الملفات
+$content = file_get_contents("adel.txt"); // قراءة الملف كامل
+
+// قراءة الملف سطر سطر
+$file = fopen("adel.txt", "r");
+while (!feof($file)) {
+    echo fgets($file) . "<br>";
+}
+fclose($file);
+
+// قراءة الملف إلى مصفوفة
+$lines = file("adel.txt");
+foreach ($lines as $line) {
+    echo $line . "<br>";
+}
+
+// كتابة الملفات
+file_put_contents("adel.txt", "adel"); // كتابة محتوى جديد
+
+// الكتابة باستخدام fopen
+$file = fopen("adel.txt", "w");
+fwrite($file, "new content\n");
+fclose($file);
+
+// الإضافة دون حذف السابق
+file_put_contents("adel.txt", "\nAppended text", FILE_APPEND);
+
+// معالجة الملفات
+if (file_exists("adel.txt")) { // التحقق من وجود الملف
+    echo "it is here ";
+}
+
+$siz = filesize("adel.txt"); // الحصول على حجم الملف
+echo "size of file is " . $siz . " bit";
+
+unlink("adel.txt");                  // حذف الملف
+copy("adel.txt", "adel.txt");        // نسخ الملف
+rename("old.txt", "new.txt");         // إعادة تسمية ملف
+
+
+// ==========================
+// دوال الوقت والتاريخ
+// ==========================
+
+// الوقت الحالي
+$timestamp = time();
+echo $timestamp;
+
+// التاريخ الحالي بتنسيق محدد
+echo date("Y-m-d H:i:s");
+
+// تفاصيل التاريخ الحالي كمصفوفة
+$dateInfo = getdate();
+print_r($dateInfo);
+
+// تنسيقات مختلفة للتاريخ
+echo date("Y-m-d");
+echo date("d/m/Y");
+echo date("l, F j ,Y");
+echo date("h:i:s A");
+
+// تحويل إلى تنسيق مقروء
+echo date("Y-m-d H:i:s", 1625097600);
+
+// الحصول على اليوم والشهر والسنة بشكل منفصل
+$year   = date("Y");
+$month  = date("m");
+$day    = date("d");
+$hour   = date("H");
+$minute = date("i");
+
+// التحويل بين الصيغ
+$timestamp = strtotime("2023-12-31");
+$timestamp = strtotime("next Monday");
+$timestamp = strtotime("+1 week");
+$timestamp = strtotime("+2 months 3 days");
+
+// تحويل تاريخ إلى كائن
+$date = DateTime::createFromFormat("d/m/Y", "31/12/2023");
+echo $date->format("Y-m-d");
+
+// مقارنة التواريخ
+$date1 = strtotime("2025-12-3");
+$date2 = strtotime("2025-12-31");
+$diff  = $date2 - $date1;
+$days  = floor($diff / (60 * 60 * 24));
+echo "الفرق: " . $days . " يوم";
+
+
+// ==========================
+// التعامل مع المناطق الزمنية
+// ==========================
+
+// ضبط المنطقة الزمنية الافتراضية
+date_default_timezone_set('Asia/Yemen');
+
+// الحصول على المنطقة الزمنية الحالية
+echo date_default_timezone_get();
+
+// عرض المناطق المتاحة
+$timezones = DateTimeZone::listIdentifiers();
+foreach ($timezones as $timezone) {
+    echo $timezone . "<br>";
+}
+
+// إنشاء كائن DateTime بمنطقة زمنية محددة
+$date = new DateTime('now', new DateTimeZone('Asia/Riyadh'));
+echo $date->format('Y-m-d H:i:s');
+
+// تغيير المنطقة الزمنية لكائن
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$date->setTimezone(new DateTimeZone('America/New_York'));
+echo $date->format('Y-m-d H:i:s');
+
+// حساب الفرق بين المناطق الزمنية
+$utc     = new DateTimeZone('UTC');
+$ny      = new DateTimeZone('America/New_York');
+$dateUtc = new DateTime('now', $utc);
+$dateNy  = new DateTime('now', $ny);
+$offset  = $utc->getOffset($dateUtc) - $ny->getOffset($dateNy);
+echo "الفرق بالساعات: " . ($offset / 3600);
+
+?>
+[٣/‏١٢, ٨:٥٤ م] ,: <?php
+// ==========================
+// التعامل مع الملفات
+// ==========================
+
+// فتح الملفات
+$file = fopen("adel.txt", "r");   // فتح ملف للقراءة
+$file = fopen("adel.txt", "w");    // فتح ملف للكتابة
+$file = fopen("adel.txt", "a");    // فتح ملف للإضافة من النهاية
+fclose($file);                      // إغلاق الملف
+
+// قراءة الملفات
+$content = file_get_contents("adel.txt"); // قراءة الملف كامل
+
+// قراءة الملف سطر سطر
+$file = fopen("adel.txt", "r");
+while (!feof($file)) {
+    echo fgets($file) . "<br>";
+}
+fclose($file);
+
+// قراءة الملف إلى مصفوفة
+$lines = file("adel.txt");
+foreach ($lines as $line) {
+    echo $line . "<br>";
+}
+
+// كتابة الملفات
+file_put_contents("adel.txt", "ahmed adel"); // كتابة محتوى جديد
+
+// الكتابة باستخدام fopen
+$file = fopen("adel.txt", "w");
+fwrite($file, "new content\n");
+fclose($file);
+
+// الإضافة دون حذف السابق
+file_put_contents("adel.txt", "\nAppended text", FILE_APPEND);
+
+// معالجة الملفات
+if (file_exists("adel.txt")) { // التحقق من وجود الملف
+    echo "it is here ";
+}
+
+$siz = filesize("adel.txt"); // الحصول على حجم الملف
+echo "size of file is " . $siz . " bit";
+
+unlink("adel.txt");                  // حذف الملف
+copy("ahmed.txt", "adel.txt");         // نسخ الملف
+rename("old.txt", "new.txt");         // إعادة تسمية ملف
+
+
+// ==========================
+// دوال الوقت والتاريخ
+// ==========================
+
+// الوقت الحالي
+$timestamp = time();
+echo $timestamp;
+
+// التاريخ الحالي بتنسيق محدد
+echo date("Y-m-d H:i:s");
+
+// تفاصيل التاريخ الحالي كمصفوفة
+$dateInfo = getdate();
+print_r($dateInfo);
+
+// تنسيقات مختلفة للتاريخ
+echo date("Y-m-d");
+echo date("d/m/Y");
+echo date("l, F j ,Y");
+echo date("h:i:s A");
+
+// تحويل إلى تنسيق مقروء
+echo date("Y-m-d H:i:s", 1625097600);
+
+// الحصول على اليوم والشهر والسنة بشكل منفصل
+$year   = date("Y");
+$month  = date("m");
+$day    = date("d");
+$hour   = date("H");
+$minute = date("i");
+
+// التحويل بين الصيغ
+$timestamp = strtotime("2023-12-31");
+$timestamp = strtotime("next Monday");
+$timestamp = strtotime("+1 week");
+$timestamp = strtotime("+2 months 3 days");
+
+// تحويل تاريخ إلى كائن
+$date = DateTime::createFromFormat("d/m/Y", "31/12/2023");
+echo $date->format("Y-m-d");
+
+// مقارنة التواريخ
+$date1 = strtotime("2025-12-3");
+$date2 = strtotime("2025-12-31");
+$diff  = $date2 - $date1;
+$days  = floor($diff / (60 * 60 * 24));
+echo "الفرق: " . $days . " يوم";
+
+
+// ==========================
+// التعامل مع المناطق الزمنية
+// ==========================
+
+// ضبط المنطقة الزمنية الافتراضية
+date_default_timezone_set('Asia/Yemen');
+
+// الحصول على المنطقة الزمنية الحالية
+echo date_default_timezone_get();
+
+// عرض المناطق المتاحة
+$timezones = DateTimeZone::listIdentifiers();
+foreach ($timezones as $timezone) {
+    echo $timezone . "<br>";
+}
+
+// إنشاء كائن DateTime بمنطقة زمنية محددة
+$date = new DateTime('now', new DateTimeZone('Asia/Riyadh'));
+echo $date->format('Y-m-d H:i:s');
+
+// تغيير المنطقة الزمنية لكائن
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$date->setTimezone(new DateTimeZone('America/New_York'));
+echo $date->format('Y-m-d H:i:s');
+
+// حساب الفرق بين المناطق الزمنية
+$utc     = new DateTimeZone('UTC');
+$ny      = new DateTimeZone('America/New_York');
+$dateUtc = new DateTime('now', $utc);
+$dateNy  = new DateTime('now', $ny);
+$offset  = $utc->getOffset($dateUtc) - $ny->getOffset($dateNy);
+echo "الفرق بالساعات: " . ($offset / 3600);
+
+?>
