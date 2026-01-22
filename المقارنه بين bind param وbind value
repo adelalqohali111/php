@@ -1,0 +1,46 @@
+bindValue
+التعريف
+.يربط القيمة مباشرة
+.يتم تخزين القيمة وقت الربط
+.لا تتأثر بأي تغيير لاحق للمتغير
+
+مثال عملي
+Php
+<?php
+$conn = new PDO("mysql:host=localhost;dbname=backend_db", "root", "");
+
+$sql = "INSERT INTO users (name, email) VALUES (:name, :email)";
+$stmt = $conn->prepare($sql);
+
+$stmt->bindValue(":name", "adel");
+$stmt->bindValue(":email", "adel@test.com");
+
+$stmt->execute();
+?>
+ القيمة ثابتة ولا تتغير
+
+-----------
+bindParam
+.التعريف
+.يربط المتغير نفسه بالاستعلام
+.يتم قراءة القيمة وقت التنفيذ (execute)
+.أي تغيير على المتغير قبل التنفيذ يؤثر على النتيجة
+
+
+مثال عملي
+Php
+<?php
+$conn = new PDO("mysql:host=localhost;dbname=backend_db", "root", "");
+
+$sql = "INSERT INTO users (name, email) VALUES (:name, :email)";
+$stmt = $conn->prepare($sql);
+
+$name = "ahmed";
+$email = "ahm@test.com";
+
+$stmt->bindParam(":name", $name);
+$stmt->bindParam(":email", $email);
+
+$stmt->execute();
+?>
+إذا غيّرت قيمة $name قبل execute → تتغير القيمة المُدخلة
